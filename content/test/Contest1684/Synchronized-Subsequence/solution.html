@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head><meta charset="UTF-8"><script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML" async></script><script type="text/x-mathjax-config">MathJax.Hub.Config({tex2jax: {inlineMath: [ ["$","$"], ["\(","\)"] ],displayMath: [ ["$$","$$"], ["\[","\]"] ]}});</script></head>
+<body>
+<h1>Problem C: Synchronized Subsequence  - solution</h1>在钦定选择第<script id="MathJax-Element-1" type="math/tex">i</script>个'a'与第<script id="MathJax-Element-2" type="math/tex">i</script>个'b'的情况下：<br/>
+<br/>
+- 若'a'在'b'之前，则在最优方案下第<script id="MathJax-Element-3" type="math/tex">i</script>个'a'与第'i'个'b'之间的其他'a'不会被选择。<br/>
+- 若'b'在'a'之前，则在最优方案下第<script id="MathJax-Element-4" type="math/tex">i</script>个'a'与第'i'个'b'之间的其他'b'必定会被选择。<br/>
+<br/>
+我们记<script id="MathJax-Element-5" type="math/tex">f_i</script>表示钦定选择第<script id="MathJax-Element-6" type="math/tex">i</script>对'a','b'时最优的答案（不含前<script id="MathJax-Element-7" type="math/tex">i-1</script>对）。我们可以根据上面的规则确定下一个决策点的位置，用后缀max进行转移即可。时空复杂度为<script id="MathJax-Element-8" type="math/tex">O(N^2)</script>，可以通过本题，当然你也可以用神必技巧做到<script id="MathJax-Element-9" type="math/tex">O(N)</script>甚至<script id="MathJax-Element-10" type="math/tex">O(N\log N)</script>。<br/>
+
+<br/>
+<br/><br/>
+
+
+</body></html>

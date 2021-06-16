@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head><meta charset="UTF-8"><script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML" async></script><script type="text/x-mathjax-config">MathJax.Hub.Config({tex2jax: {inlineMath: [ ["$","$"], ["\(","\)"] ],displayMath: [ ["$$","$$"], ["\[","\]"] ]}});</script></head>
+<body>
+<h1>Problem B: 博弈  - solution</h1>## T2<br/>
+<br/>
+ ---<br/>
+<br/>
+ 后手必胜的条件：1号节点位于树的直径中点上。<br/>
+<br/>
+ 此时若先手移动到距离1为d的点x上，后手总可以移动到位于树直径上的距离1为d且和x不在一颗子树上的节点y。同时该操作一定合法。<br/>
+<br/>
+ 若1号节点不再树的直径重点上，则先手总有办法使得后手陷入上面描述的局面中。<br/>
+<br/>
+ ---<br/>
+<br/>
+ 直接长链剖分计算合法方案数即可。<br/>
+<br/>
+ 时间复杂度<script id="MathJax-Element-1" type="math/tex">O(n)</script>。<br/>
+<br/>
+ ---<br/><br/><br/>
+
+
+</body></html>

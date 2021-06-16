@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head><meta charset="UTF-8"><script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML" async></script><script type="text/x-mathjax-config">MathJax.Hub.Config({tex2jax: {inlineMath: [ ["$","$"], ["\(","\)"] ],displayMath: [ ["$$","$$"], ["\[","\]"] ]}});</script></head>
+<body>
+<h1>Problem C: 网络流  - solution</h1><br/>
+<br/>
+## T3<br/>
+<br/>
+ ---<br/>
+<br/>
+ ### 算法1<br/>
+<br/>
+ 写了一发网络流暴力扔了上去。<br/>
+<br/>
+ 得分不明。<br/>
+<br/>
+ ---<br/>
+<br/>
+ ### 算法2<br/>
+<br/>
+ 观察性质<br/>
+<br/>
+ <script id="MathJax-Element-1" type="math/tex">f(i,j)>max(f(i-1,j),f(i,j+1))</script><br/>
+<br/>
+ 这提示我们答案是一个递减函数。<br/>
+<br/>
+ 考虑计算有多少个使得答案<script id="MathJax-Element-2" type="math/tex">\geq a</script>的<script id="MathJax-Element-3" type="math/tex">f(i,j)</script><br/>
+<br/>
+ 预处理出来对于每个<script id="MathJax-Element-4" type="math/tex">i</script>，左边选择集合<script id="MathJax-Element-5" type="math/tex">j</script>，右边选择集合<script id="MathJax-Element-6" type="math/tex">k</script>，是否存在可行流。<br/>
+<br/>
+ 时间复杂度<script id="MathJax-Element-7" type="math/tex">O(\frac{nk8^k}{w})</script>。<br/>
+<br/>
+ ---<br/>
+<br/>
+ ### 算法3<br/>
+<br/>
+ 仍然考虑计数问题。<br/>
+<br/>
+ 不同的是我们设一点状态。<br/>
+<br/>
+ 设<script id="MathJax-Element-8" type="math/tex">g(i,j)</script>表示考虑<script id="MathJax-Element-9" type="math/tex">i \sim n+1</script>层，从状态<script id="MathJax-Element-10" type="math/tex">j</script>出发，最多能转移到哪一层。<br/>
+<br/>
+ 我们再次考虑一下[Hall定理](https://baike.baidu.com/item/Hall%E5%AE%9A%E7%90%86/5111749?fr=aladdin)。<br/>
+<br/>
+ 根据Hall定理我们可以得到如下转移方式:<br/>
+<br/>
+ ---<br/>
+<br/>
+ 枚举每一个子集<script id="MathJax-Element-11" type="math/tex">S</script>，找到其相邻的点集<script id="MathJax-Element-12" type="math/tex">T</script>。对于每个<script id="MathJax-Element-13" type="math/tex">T</script>的大小为<script id="MathJax-Element-14" type="math/tex">|S|</script>的子集<script id="MathJax-Element-15" type="math/tex">U</script>,求<script id="MathJax-Element-16" type="math/tex">g(i+1,U)</script>的最大值，设为<script id="MathJax-Element-17" type="math/tex">h(S)</script><br/>
+<br/>
+ 则<script id="MathJax-Element-18" type="math/tex">g(i,S)</script>为<script id="MathJax-Element-19" type="math/tex">min \left\{ h(T),T \subset S \right\}</script><br/>
+<br/>
+ 正确性可以通过枚举时间设置0/1状态得到<br/>
+<br/>
+ 单次转移复杂度<script id="MathJax-Element-20" type="math/tex">O(2^k*k^2)</script><br/>
+<br/>
+ 总复杂度<script id="MathJax-Element-21" type="math/tex">O(n*2^k*k^2)</script><br/>
+<br/>
+ ---<br/>
+<br/>
+ ### 算法4<br/>
+<br/>
+ Hall定理看上去优化不了了。<br/>
+<br/>
+ 回到最初的网络流建图模型上来。<br/>
+<br/>
+ 如果我们只需要计算<script id="MathJax-Element-22" type="math/tex">f(1,i)</script>则只需要从第一层出发流尽量长的流即可。这样子跑网络流显然正确<br/>
+<br/>
+ 同时我们可以直接从跑完第一层的残量网络继承过来直接计算第二层的流！<br/>
+<br/>
+ ---<br/>
+<br/>
+ 考虑在第二层的额外扩展的流，若其比第一层扩展的优秀而没有被扩展，说明这个流在第一层无法被扩展，不会被相对的贪心顺序影响。<br/>
+<br/>
+ 否则这一条流显然没有第一层拓展的优秀，符合贪心策略。<br/>
+<br/>
+ 由于寻找一次长度为<script id="MathJax-Element-23" type="math/tex">p</script>的流的复杂度为<script id="MathJax-Element-24" type="math/tex">O(p*k^2)</script>，总流量为<script id="MathJax-Element-25" type="math/tex">O(n*k)</script>，所以总复杂度为<script id="MathJax-Element-26" type="math/tex">O(n*k^3)</script><br/>
+<br/>
+ 可以通过某些操作使得复杂度变为<script id="MathJax-Element-27" type="math/tex">O(n*k^3/w)</script><br/>
+<br/>
+ ---<br/><br/><br/>
+
+
+</body></html>

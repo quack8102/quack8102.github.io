@@ -1,0 +1,11 @@
+body {
+    position: relative;
+}
+/* 侧边栏固定显示 */
+#sidebar{
+    position: fixed;
+}
+/* 顶部导航条缩进 */
+.navbar-header {
+    padding-left: 5%;
+}

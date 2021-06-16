@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head><meta charset="UTF-8"><script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML" async></script><script type="text/x-mathjax-config">MathJax.Hub.Config({tex2jax: {inlineMath: [ ["$","$"], ["\(","\)"] ],displayMath: [ ["$$","$$"], ["\[","\]"] ]}});</script></head>
+<body>
+<h1>Problem A: 小卖部  - solution</h1>## T1<br/>
+<br/>
+ ---<br/>
+<br/>
+ ### 算法1<br/>
+<br/>
+ 我会暴力！<br/>
+<br/>
+ 每次询问暴力求解。<br/>
+<br/>
+ 时间复杂度<script id="MathJax-Element-1" type="math/tex">O(nqc)</script><br/>
+<br/>
+ ---<br/>
+<br/>
+ ### 算法2<br/>
+<br/>
+ 我会分块!<br/>
+<br/>
+ 将原序列分成<script id="MathJax-Element-2" type="math/tex">\sqrt{n}</script>块，询问时加入<script id="MathJax-Element-3" type="math/tex">\sqrt{n}</script>个零散元素。<br/>
+<br/>
+ 时间复杂度<script id="MathJax-Element-4" type="math/tex">O(\sqrt{n}Qc)</script>。<br/>
+<br/>
+ ---<br/>
+<br/>
+ ### 算法3<br/>
+<br/>
+ 我会猫树！<br/>
+<br/>
+ [猫树介绍](http://immortalco.blog.uoj.ac/blog/2102)。<br/>
+<br/>
+ 直接使用猫树维护，询问时<script id="MathJax-Element-5" type="math/tex">O(1)</script>合并即可。<br/>
+<br/>
+ 时间复杂度<script id="MathJax-Element-6" type="math/tex">O((n \log n+Q)c)</script>。<br/>
+<br/>
+ ---<br/>
+<br/>
+ ### 算法4<br/>
+<br/>
+ 我会分析性质！<br/>
+<br/>
+ 考虑把答案看成生成函数形式。不难发现一个背包形如<script id="MathJax-Element-7" type="math/tex">\frac{1-x^{(a_i+1)b_i}}{1-x^{b_i}}</script>。<br/>
+<br/>
+ 则答案可以看成是若干个形如<script id="MathJax-Element-8" type="math/tex">1-x^i</script>进行相乘或相除得到的结果。<br/>
+<br/>
+ 求前缀和相当于增加了一个个数无穷，且价格为<script id="MathJax-Element-9" type="math/tex">1</script>的物品。<br/>
+<br/>
+ ---<br/>
+<br/>
+ 预处理出来对于每个前缀的<script id="MathJax-Element-10" type="math/tex">\frac{1-x^{(a_i+1)b_i}}{1-x^{b_i}}</script>的乘积以及其逆。<br/>
+<br/>
+ 询问变成询问两个多项式乘积的单点点值，直接暴力即可。<br/>
+<br/>
+ 时间复杂度<script id="MathJax-Element-11" type="math/tex">O((n+Q)c)</script><br/>
+<br/>
+ ---<br/><br/><br/>
+
+
+</body></html>

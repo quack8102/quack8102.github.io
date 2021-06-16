@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head><meta charset="UTF-8"><script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML" async></script><script type="text/x-mathjax-config">MathJax.Hub.Config({tex2jax: {inlineMath: [ ["$","$"], ["\(","\)"] ],displayMath: [ ["$$","$$"], ["\[","\]"] ]}});</script></head>
+<body>
+<h1>Problem B: 博弈 </h1><p>Time Limit: 3000 ms    Memory Limit: 512 MB</p><h2>Description</h2># 博弈(game)<br/>
+<br/>
+ ### 题目描述<br/>
+<br/>
+ ysgh 有一棵 <script id="MathJax-Element-1" type="math/tex">n</script> 个节点的树，树上在 <script id="MathJax-Element-2" type="math/tex">1</script> 有一颗棋子。<br/>
+<br/>
+ ysgh 和 ysgs 利用这个棋子开始 van 游戏。具体的，ysgh 和 ysgs 轮流移动这个棋子，ysgh 先手。每次移动时，需要满足本次移动的树上距离严格大于上一次移动的树上距离（第一次移动需要满足树上距离不为 <script id="MathJax-Element-3" type="math/tex">0</script>），无法移动着输。他们称此游戏为 ogsc。ysgh 和 ysgs 都会做出游戏的最优决策。<br/>
+<br/>
+ ysgh 和 ysgs van 了很多游戏，渐渐觉得无聊了。<br/>
+<br/>
+ 现在他们打算 van 以下游戏：<br/>
+<br/>
+ 给定一颗 <script id="MathJax-Element-4" type="math/tex">n</script> 个节点的树。ysgs 会选出一个包含节点 <script id="MathJax-Element-5" type="math/tex">1</script> 的联通子树进行 ogsc 游戏。在两人均作最优决策的情况下，有多少个 ysgs 必胜的游戏。由于答案很大，只需要算对 <script id="MathJax-Element-6" type="math/tex">998244353</script> 取膜的结果。<br/>
+<br/>
+ ysgs 花了 <script id="MathJax-Element-7" type="math/tex">\text{0.5s}</script> 报出了答案，但是 ysgh 不知道是不是对的，于是他们找到了在一旁吃瓜的你。<br/>
+<br/>
+ ### 输入格式<br/>
+<br/>
+ 从 ```game.in``` 中读入数据<br/>
+<br/>
+ 本题有多组测试数据。<br/>
+<br/>
+ 第一行一个数字表示测试数据组数 <script id="MathJax-Element-8" type="math/tex">T</script>。<br/>
+<br/>
+ 对于每组数据，第一行一个数字 <script id="MathJax-Element-9" type="math/tex">n</script>。<br/>
+<br/>
+ 接下来 <script id="MathJax-Element-10" type="math/tex">n-1</script> 行，第 <script id="MathJax-Element-11" type="math/tex">i</script> 行两个数字 <script id="MathJax-Element-12" type="math/tex">x,y</script>，表示一条连接 <script id="MathJax-Element-13" type="math/tex">x,y</script> 的边。<br/>
+<br/>
+ ### 输出格式<br/>
+<br/>
+ 向 ```game.out``` 中输出数据。<br/>
+<br/>
+ 对于每组数据，一行一个数字表示答案。 <br/>
+<br/>
+ ### 样例<br/>
+<br/>
+ #### 样例1输入<br/>
+ ```plain<br/>
+ 2<br/>
+ 3<br/>
+ 1 2<br/>
+ 1 3<br/>
+ 6<br/>
+ 1 2<br/>
+ 2 3<br/>
+ 1 4<br/>
+ 4 5<br/>
+ 4 6<br/>
+ ```<br/>
+<br/>
+ #### 样例1输出<br/>
+ ```plain<br/>
+ 2<br/>
+ 5<br/>
+ ```<br/>
+<br/>
+<br/>
+ #### 样例1解释<br/>
+<br/>
+ 选择点集 <script id="MathJax-Element-14" type="math/tex">\{1\},\{1,2,3\}</script> 时 ysgs 必胜。<br/>
+<br/>
+ 选择点集 <script id="MathJax-Element-15" type="math/tex">\{1,2\},\{1,3\}</script> 时 ysgh 必胜。<br/>
+<br/>
+ ### 数据范围<br/>
+<br/>
+ |  数据点编号  | <script id="MathJax-Element-16" type="math/tex">n\leq</script>  |<br/>
+ | :----------: | :------: |<br/>
+ |     <script id="MathJax-Element-17" type="math/tex">1</script>      |   <script id="MathJax-Element-18" type="math/tex">3</script>    |<br/>
+ |  <script id="MathJax-Element-19" type="math/tex">2 \sim 3</script>  |   <script id="MathJax-Element-20" type="math/tex">5</script>    |<br/>
+ |  <script id="MathJax-Element-21" type="math/tex">4 \sim 6</script>  |   <script id="MathJax-Element-22" type="math/tex">10</script>   |<br/>
+ |  <script id="MathJax-Element-23" type="math/tex">7 \sim 9</script>  |   <script id="MathJax-Element-24" type="math/tex">50</script>   |<br/>
+ | <script id="MathJax-Element-25" type="math/tex">10 \sim 12</script> |  <script id="MathJax-Element-26" type="math/tex">300</script>   |<br/>
+ | <script id="MathJax-Element-27" type="math/tex">13 \sim 15</script> |  <script id="MathJax-Element-28" type="math/tex">5000</script>  |<br/>
+ | <script id="MathJax-Element-29" type="math/tex">16 \sim 18</script> | <script id="MathJax-Element-30" type="math/tex">50000</script>  |<br/>
+ | <script id="MathJax-Element-31" type="math/tex">19 \sim 20</script> | <script id="MathJax-Element-32" type="math/tex">200000</script> |<br/>
+<br/>
+ 对于所有数据，满足 <script id="MathJax-Element-33" type="math/tex">1\le n\le 200000,T\le 10</script>。<br/>
+<br/>
+ 请选手注意在IO上使用的时间。<br/>
+<br/>
+ 时间限制：<script id="MathJax-Element-34" type="math/tex">\texttt{3S}</script><br/>
+<br/>
+ 空间限制：<script id="MathJax-Element-35" type="math/tex">\texttt{512MB}</script><br/>
+</body></html>

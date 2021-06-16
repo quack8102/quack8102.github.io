@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head><meta charset="UTF-8"><script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML" async></script><script type="text/x-mathjax-config">MathJax.Hub.Config({tex2jax: {inlineMath: [ ["$","$"], ["\(","\)"] ],displayMath: [ ["$$","$$"], ["\[","\]"] ]}});</script></head>
+<body>
+<h1>Problem C: 网络流 </h1><p>Time Limit: 3000 ms    Memory Limit: 512 MB</p><h2>Description</h2># 网络流(flow)<br/>
+<br/>
+ ### 题目描述<br/>
+<br/>
+asugongshang打算教教他们网络流的正确姿势。<br/>
+<br/>
+ 他从网上找了这么一道标签里包含网络流的题目:<br/>
+<br/>
+WZYYN有一张<script id="MathJax-Element-1" type="math/tex">n \times k</script>个节点的图，节点总共分为<script id="MathJax-Element-2" type="math/tex">n</script>层，每层<script id="MathJax-Element-3" type="math/tex">k</script>个。为了方便描述，之后我们称第<script id="MathJax-Element-4" type="math/tex">i</script>层第<script id="MathJax-Element-5" type="math/tex">j</script>个点为<script id="MathJax-Element-6" type="math/tex">(i,j)</script>。<br/>
+<br/>
+ 这张图非常特殊，<script id="MathJax-Element-7" type="math/tex">\forall i \in [1,n-1]</script>，有且仅有连接从第<script id="MathJax-Element-8" type="math/tex">i</script>层出发，终止于第<script id="MathJax-Element-9" type="math/tex">i+1</script>层的单向通道。<br/>
+<br/>
+WZYYN想要在这张图上存储某些信息。每条信息长度均为n。<br/>
+<br/>
+WZYYN需要找到一个仅包含<script id="MathJax-Element-10" type="math/tex">[1,k]</script>的长度为<script id="MathJax-Element-11" type="math/tex">n</script>的序列<script id="MathJax-Element-12" type="math/tex">a</script>使得<script id="MathJax-Element-13" type="math/tex">\forall i∈[1,n-1]</script>,存在<script id="MathJax-Element-14" type="math/tex">(i,a_i)</script>到<script id="MathJax-Element-15" type="math/tex">(i+1,a_{i+1})</script>的单向路径。<br/>
+<br/>
+WZYYN可以在这条路径的所有节点上存储恰好一条信息。同时，不同信息不能存储在相同节点上，也就是说，一个节点最多只能被使用一次。<br/>
+<br/>
+WZYYN想要知道这张图上最多能存储几条信息。<br/>
+<br/>
+asugongshang觉得这道题非常傻逼于是把他加强了一下:<br/>
+<br/>
+ 设<script id="MathJax-Element-16" type="math/tex">f(i,j)</script>表示选出原图中的第<script id="MathJax-Element-17" type="math/tex">i</script>层至第<script id="MathJax-Element-18" type="math/tex">j</script>层节点的子图，最多能存储的长度为<script id="MathJax-Element-19" type="math/tex">j-i+1</script>的信息数量。<br/>
+<br/>
+asugongshang想要知道<script id="MathJax-Element-20" type="math/tex">\sum \limits_{i=1}^{n-1} \sum \limits_{j=i+1}^{n} f(i,j)</script>。<br/>
+<br/>
+ ### 输入格式<br/>
+<br/>
+ 从 ```flow.in``` 中读入数据。<br/>
+<br/>
+ 第一行两个正整数<script id="MathJax-Element-21" type="math/tex">n,k</script>。<br/>
+<br/>
+ 接下来<script id="MathJax-Element-22" type="math/tex">n-1</script>个<script id="MathJax-Element-23" type="math/tex">k</script>行<script id="MathJax-Element-24" type="math/tex">k</script>列的01矩阵，矩阵之间用空行分隔。<br/>
+<br/>
+ 对于第<script id="MathJax-Element-25" type="math/tex">i</script>个矩阵，若存在<script id="MathJax-Element-26" type="math/tex">(i,j)</script>至<script id="MathJax-Element-27" type="math/tex">(i+1,k)</script>的单向边，则第<script id="MathJax-Element-28" type="math/tex">j</script>行第<script id="MathJax-Element-29" type="math/tex">k</script>个元素为<script id="MathJax-Element-30" type="math/tex">1</script>，否则第<script id="MathJax-Element-31" type="math/tex">j</script>行第<script id="MathJax-Element-32" type="math/tex">k</script>个元素为<script id="MathJax-Element-33" type="math/tex">0</script>.<br/>
+<br/>
+ ### 输出格式<br/>
+<br/>
+ 向 ```flow.out``` 中读入数据。<br/>
+<br/>
+ 一行一个数字表示答案。 <br/>
+<br/>
+ ### 样例<br/>
+<br/>
+ #### 样例1输入<br/>
+<br/>
+ ```<br/>
+ 4 4<br/>
+ 1000<br/>
+ 1100<br/>
+ 0110<br/>
+ 0011<br/>
+<br/>
+ 0100<br/>
+ 1100<br/>
+ 0010<br/>
+ 0001<br/>
+<br/>
+ 1000<br/>
+ 1100<br/>
+ 0000<br/>
+ 0011<br/>
+ ```<br/>
+<br/>
+ #### 样例1输出<br/>
+<br/>
+ ```<br/>
+ 21<br/>
+ ```<br/>
+<br/>
+ #### 样例1解释<br/>
+<br/>
+ <script id="MathJax-Element-34" type="math/tex">f(1,2)=f(1,3)=f(2,3)=4</script><br/>
+<br/>
+ <script id="MathJax-Element-35" type="math/tex">f(1,4)=f(2,4)=f(3,4)=3</script><br/>
+<br/>
+ ### 数据范围<br/>
+<br/>
+ | 数据点编号 | <script id="MathJax-Element-36" type="math/tex">n \le</script> | <script id="MathJax-Element-37" type="math/tex">k \le</script> |<br/>
+ | :--: | :--: | :--: |<br/>
+ | <script id="MathJax-Element-38" type="math/tex">1 \sim 2</script>  | <script id="MathJax-Element-39" type="math/tex">10</script>    | <script id="MathJax-Element-40" type="math/tex">10</script> |<br/>
+ | <script id="MathJax-Element-41" type="math/tex">3 \sim 4</script>  | <script id="MathJax-Element-42" type="math/tex">100</script>   | <script id="MathJax-Element-43" type="math/tex">10</script> |<br/>
+ | <script id="MathJax-Element-44" type="math/tex">5 \sim 6</script>  | <script id="MathJax-Element-45" type="math/tex">1000</script>  | <script id="MathJax-Element-46" type="math/tex">10</script> |<br/>
+ | <script id="MathJax-Element-47" type="math/tex">7</script>  | <script id="MathJax-Element-48" type="math/tex">40000</script> | <script id="MathJax-Element-49" type="math/tex">1</script>  |<br/>
+ | <script id="MathJax-Element-50" type="math/tex">8 \sim 9</script>  | <script id="MathJax-Element-51" type="math/tex">40000</script> | <script id="MathJax-Element-52" type="math/tex">2</script>  |<br/>
+ | <script id="MathJax-Element-53" type="math/tex">10 \sim 11</script> | <script id="MathJax-Element-54" type="math/tex">40000</script> | <script id="MathJax-Element-55" type="math/tex">3</script>  |<br/>
+ | <script id="MathJax-Element-56" type="math/tex">12 \sim 13</script> | <script id="MathJax-Element-57" type="math/tex">40000</script> | <script id="MathJax-Element-58" type="math/tex">4</script>  |<br/>
+ | <script id="MathJax-Element-59" type="math/tex">14 \sim 15</script> | <script id="MathJax-Element-60" type="math/tex">40000</script> | <script id="MathJax-Element-61" type="math/tex">5</script>  |<br/>
+ | <script id="MathJax-Element-62" type="math/tex">16 \sim 17</script> | <script id="MathJax-Element-63" type="math/tex">40000</script> | <script id="MathJax-Element-64" type="math/tex">6</script>  |<br/>
+ | <script id="MathJax-Element-65" type="math/tex">18 \sim 19</script> | <script id="MathJax-Element-66" type="math/tex">40000</script> | <script id="MathJax-Element-67" type="math/tex">7</script>  |<br/>
+ | <script id="MathJax-Element-68" type="math/tex">20 \sim 21</script> | <script id="MathJax-Element-69" type="math/tex">40000</script> | <script id="MathJax-Element-70" type="math/tex">8</script>  |<br/>
+ | <script id="MathJax-Element-71" type="math/tex">22 \sim 23</script> | <script id="MathJax-Element-72" type="math/tex">40000</script> | <script id="MathJax-Element-73" type="math/tex">9</script>  |<br/>
+ | <script id="MathJax-Element-74" type="math/tex">24 \sim 25</script> | <script id="MathJax-Element-75" type="math/tex">40000</script> | <script id="MathJax-Element-76" type="math/tex">10</script> |<br/>
+<br/>
+ 对于 <script id="MathJax-Element-77" type="math/tex">100\%</script> 的数据，<script id="MathJax-Element-78" type="math/tex">1 \le n \le 40000,1 \le k \le 10</script>。<br/>
+<br/>
+ 时间限制：<script id="MathJax-Element-79" type="math/tex">\texttt{3S}</script><br/>
+<br/>
+ 空间限制：<script id="MathJax-Element-80" type="math/tex">\texttt{512MB}</script><br/>
+</body></html>
